@@ -12,6 +12,7 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
 import { AddpostComponent } from './pages/addpost/addpost.component';
+import { FormsModule } from '@angular/forms';
 
 // import ngx-toastr
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -47,7 +48,8 @@ import { environment } from "../environments/environment";
     ToastrModule.forRoot(),
     FontAwesomeModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
