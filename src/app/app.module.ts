@@ -12,6 +12,8 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
 import { AddpostComponent } from './pages/addpost/addpost.component';
+
+
 import { FormsModule } from '@angular/forms';
 
 // import ngx-toastr
@@ -23,7 +25,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 // import Firebase
 import { AngularFireModule } from "@angular/fire";
-import {AngularFireAuth, AngularFireAuthModule} from "@angular/fire/auth";
+import { AngularFireAuthModule} from "@angular/fire/auth";
 
 // import environment
 import { environment } from "../environments/environment";

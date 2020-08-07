@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -7,9 +11,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SigninComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private auth: AuthService,
+    private toastr : ToastrService,
+    private router : Router
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(f : NgForm) {
+    const { email,password } = f.form.value;
+
+    this.auth.signIn(email,password).then((res)=>{
+      this.toastr.success("Sign in success");
+      this.router.navigateByUrl("");
+    }).catch((error)=>{
+      this.toastr.error(error.message,"Error",{
+        closeButton : true
+      });
+    })
+
   }
 
 }
