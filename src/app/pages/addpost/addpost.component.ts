@@ -43,8 +43,9 @@ export class AddpostComponent implements OnInit {
     private toastr : ToastrService
   ) {
     auth.getUser().subscribe((user)=>{
-      this.db.object(`/users/${user.uid}`).valueChanges().subscribe((user)=>{
-        this.user = user;
+      console.log(user)
+      this.db.object(`/users/${user.uid}`).valueChanges().subscribe((userDetails)=>{
+        this.user = userDetails;
         console.log(user);
       })
     })
@@ -55,7 +56,24 @@ export class AddpostComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(){
+  onSubmit(f : NgForm){
+      const { locationName,description } = f.form.value;
+      const uid = uuidv4();
+
+      this.db.object(`/posts/${uid}`).set({
+        id : uid,
+        locationName : locationName,
+        description : description,
+        picture : this.picture,
+        by : this.user.name,
+        instaId : this.user.username,
+        date : Date.now()
+      }).then(()=>{
+        this.toastr.success("Post Added Successfully..")
+        this.router.navigateByUrl("");
+      }).catch((error)=>{
+        this.toastr.error("Error while process")
+      })
 
   }
 

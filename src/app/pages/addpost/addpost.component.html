@@ -5,16 +5,16 @@
         Add Your Own Post
       </div>
 
-      <form class="card-body" (ngSubmit)="onSubmit()">
+      <form class="card-body" (ngSubmit)="onSubmit(f)"  #f="ngForm">
         <div class="form-group">
           <label>Location Name</label>
-          <input type="text" class="form-control" placeholder="Enter Location Name" required name="locationName">
+          <input type="text" class="form-control" placeholder="Enter Location Name" ngModel required name="locationName">
         </div>
 
 
         <div class="form-group">
           <label>Description</label>
-          <textarea rows="5" class="form-control" placeholder="Enter Description" required name="description"></textarea>
+          <textarea rows="5" class="form-control" placeholder="Enter Description" ngModel required name="description"></textarea>
         </div>
 
 
